@@ -1,16 +1,16 @@
 {
-  "name": "redux-simple-starter",
-  "version": "1.0.0",
-  "description": "Simple starter package for Redux with React and Babel support",
+  "name": "Coupling",
+  "version": "0.0.1",
+  "description": "Web application for Coupling affiliates to conglomerate coupons from vendors",
   "main": "index.js",
-  "repository": "git@github.com:StephenGrider/ReduxSimpleStarter.git",
+  "repository": "https://github.com/bityogi/CouplingIO.git",
   "scripts": {
     "start": "node ./node_modules/webpack-dev-server/bin/webpack-dev-server.js",
     "test": "mocha --compilers js:babel-core/register --require ./test/test_helper.js --recursive ./test",
     "test:watch": "npm run test -- --watch"
   },
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "devDependencies": {
     "babel-core": "^6.2.1",
     "babel-loader": "^6.2.0",

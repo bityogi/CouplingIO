@@ -1,7 +1,8 @@
 import { combineReducers } from 'redux';
+import couponsReducer from './couponsReducer';
 
 const rootReducer = combineReducers({
-  state: (state = {}) => state
+  coupons: couponsReducer
 });
 
 export default rootReducer;

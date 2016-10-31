@@ -1,0 +1,88 @@
+[
+  {
+    "id": 1,
+    "url": "http://localhost:8080/misc/data/images/coupon1.jpeg",
+    "categories": ["cleaner", "chiropractor", "food"],
+    "name": "Coupon Vendor",
+    "address": {
+      "street": "123 Main Street",
+      "city": "San Diego",
+      "zip": "92122",
+      "country": "United States"
+    }
+  },
+  {
+    "id": 2,
+    "url": "http://localhost:8080/misc/data/images/coupon2.jpeg",
+    "categories": ["cleaner", "chiropractor", "food"],
+    "name": "Coupon Vendor",
+    "address": {
+      "street": "123 Main Street",
+      "city": "San Diego",
+      "zip": "92122",
+      "country": "United States"
+    }
+  },
+  {
+    "id": 3,
+    "url": "http://localhost:8080/misc/data/images/coupon3.png",
+    "categories": ["cleaner", "chiropractor", "food"],
+    "name": "Coupon Vendor",
+    "address": {
+      "street": "123 Main Street",
+      "city": "San Diego",
+      "zip": "92122",
+      "country": "United States"
+    }
+  },
+  {
+    "id": 4,
+    "url": "http://localhost:8080/misc/data/images/coupon4.jpeg",
+    "categories": ["cleaner", "chiropractor", "food"],
+    "name": "Coupon Vendor",
+    "address": {
+      "street": "123 Main Street",
+      "city": "San Diego",
+      "zip": "92122",
+      "country": "United States"
+    }
+  },
+  {
+    "id": 5,
+    "url": "http://localhost:8080/misc/data/images/coupon6.jpeg",
+    "categories": ["cleaner", "chiropractor", "food"],
+    "name": "Coupon Vendor",
+    "address": {
+      "street": "123 Main Street",
+      "city": "San Diego",
+      "zip": "92122",
+      "country": "United States"
+    }
+  },
+  {
+    "id": 6,
+    "url": "http://localhost:8080/misc/data/images/coupon7.jpeg",
+    "categories": ["cleaner", "chiropractor", "food"],
+    "name": "Coupon Vendor",
+    "address": {
+      "street": "123 Main Street",
+      "city": "San Diego",
+      "zip": "92122",
+      "country": "United States"
+    }
+  },
+  {
+    "id": 7,
+    "url": "http://localhost:8080/misc/data/images/coupon8.jpeg",
+    "categories": ["cleaner", "chiropractor", "food"],
+    "name": "Coupon Vendor",
+    "address": {
+      "street": "123 Main Street",
+      "city": "San Diego",
+      "zip": "92122",
+      "country": "United States"
+    }
+  }
+
+
+]

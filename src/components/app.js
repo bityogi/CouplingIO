@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import SearchBar from './searchBar';
-// import CouponList from './couponList';
+import CouponList from './couponList';
 
 export default class App extends Component {
   render() {
@@ -8,7 +8,7 @@ export default class App extends Component {
       <div>
         <div>Coupling IO</div>
         <SearchBar />
-      
+        <CouponList />
       </div>
     );
   }

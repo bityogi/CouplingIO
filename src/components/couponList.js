@@ -6,14 +6,22 @@ import CouponItem from './couponItem';
 class CouponList extends Component {
 
   renderCoupons() {
-    return this.props.coupons.map((coupon) => {
-      return (
-        return <CouponItem key={coupon.id} coupon={coupon} />
-      )
-    })
+    if (this.props.coupons[0] !== undefined) {
+      const coupons = this.props.coupons[0];
+      console.log('parsed coupons = ', coupons);
+
+      return coupons.map((coupon) => {
+        console.log('coupon item: ', coupon);
+        return (
+           <CouponItem key={coupon.id} coupon={coupon} />
+        );
+      });
+    }
+
   }
 
   render() {
+    console.log('returned coupons: ', this.props.coupons);
     return (
       <ul className="col-md-4 list-group">
         {this.renderCoupons()}
@@ -22,8 +30,8 @@ class CouponList extends Component {
   }
 }
 
-function mapStateToProps(state) {
-  return { coupons: state.coupons };
+function mapStateToProps({ coupons }) {
+  return { coupons };
 }
 
 export default connect(mapStateToProps)(CouponList);

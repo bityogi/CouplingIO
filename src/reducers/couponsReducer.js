@@ -1,5 +1,10 @@
+import { FETCH_COUPONS } from '../actions/index';
 
-export default (state = null, action) => {
-  console.log('Action received', action);
+export default (state = [], action) => {
+  switch (action.type) {
+    case FETCH_COUPONS:
+      return [ action.payload.data ];
+  }
+
   return state;
 }

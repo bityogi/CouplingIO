@@ -25,7 +25,7 @@ class SearchBar extends Component {
 
   render() {
     return (
-      <div className="form-control">
+      <div className="search-bar">
         <input
             placeholder="Search for coupons"
             className="form-control"

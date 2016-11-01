@@ -1,14 +1,15 @@
 import React, { Component } from 'react';
-import SearchBar from './searchBar';
-import CouponList from './couponList';
+import { Link } from 'react-router';
+
+
 
 export default class App extends Component {
   render() {
     return (
       <div>
-        <div>Coupling IO</div>
-        <SearchBar />
-        <CouponList />
+        <h2>Coupling IO</h2>
+        <Link to="/coupon/new" className="btn btn-primary">Publish your coupon</Link>
+        {this.props.children}
       </div>
     );
   }

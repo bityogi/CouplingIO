@@ -1,14 +1,95 @@
 import React, { Component, PropTypes } from 'react';
-import { reduxForm } from 'redux-form';
-import { publishCoupon } from '../actions/index';
+import { Field, reduxForm } from 'redux-form';
 import { Link } from 'react-router';
+import Dropzone from 'react-dropzone';
+
+import { publishCoupon } from '../actions/index';
+
+const FILE_FIELD_NAME = 'couponImage';
+
+const renderDropzoneInput = (field) => {
+  const files = field.input.value;
+
+  return (
+    <div>
+      <label>{field.label}</label>
+      <div>
+        <Dropzone
+          name={field.name}
+          onDrop={( filesToUpload, e ) => field.input.onChange(filesToUpload) }
+        >
+        <div>Try dropping some files here, or click to select files to upload.</div>
+      </Dropzone>
+      {field.meta.touched &&
+          field.meta.error &&
+          <span className="error">{field.meta.error}</span>}
+        {files && Array.isArray(files) && (
+          <ul>
+            { files.map((file, i) => <li key={i}>{file.name}</li>) }
+          </ul>
+        )}
+      </div>
+    </div>
+  );
+}
+
+const renderField = ({ input, label, type, meta: { touched, error, warning } }) => (
+  <div>
+    <label>{label}</label>
+    <div>
+      <input {...input} placeholder={label} type={type}/>
+      {touched && ((error && <span>{error}</span>) || (warning && <span>{warning}</span>))}
+    </div>
+  </div>
+)
+
+const validate =  (values) => {
+  const errors = {};
+
+  if (!values.name) {
+    errors.name = 'Required';
+  }
+  if (!values.categories) {
+    errors.categories = 'Required';
+  }
+  if(!values.street) {
+    errors.street = 'Required';
+  }
+  if(!values.city) {
+    errors.city = 'Required';
+  }
+  if(!values.zip) {
+    errors.zip = 'Required';
+  }
+  if(!values.country) {
+    errors.country = 'Required';
+  }
+
+  if(!values.amount) {
+    errors.amount = 'Required';
+  } else if (isNaN(Number(values.amount))) {
+    errors.amount = "Must be a number";
+  }
+
+  if(!values.maxRedemptionAmount) {
+    errors.maxRedemptionAmount = 'Required';
+  } else if (isNaN(Number(values.maxRedemptionAmount))) {
+    errors.maxRedemptionAmount = "Must be a number";
+  }
+
+
+  return errors;
+}
+
 
 class PublishCoupon extends Component {
   static contextTypes = {
     router: PropTypes.object
   };
 
-  onSubmit(props) {
+  onSubmit(values) {
+    console.log('form values: ', values);
+
     this.props.publishCoupon(props)
       .then(() => {
         this.context.router.push('/');
@@ -16,57 +97,38 @@ class PublishCoupon extends Component {
   }
 
   render() {
-    const { fields:
-      {
-        categories,
-        image,
-        name,
-        street,
-        city,
-        zip,
-        country ,
-        amount,
-        maxRedemptionAmount
-      },
-        handleSubmit } = this.props;
+    const { handleSubmit, pristine, reset, submitting } = this.props;
 
     return (
       <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
         <h3>Publish your coupon on our distribution engine</h3>
 
-        <div>
-          <label>Name</label>
-          <input type="text" className="form-control" {...name} />
+        <Field name="name" component={renderField} label="Name" />
+        <Field name="categories" component={renderField} label="Categories" />
+        <Field name="street" component={renderField} label="Street" />
+        <Field name="city" component={renderField} label="City" />
+        <Field name="zip" component={renderField} label="Zip" />
+        <Field name="country" component={renderField} label="Country" />
 
-        </div>
+        <Field name={FILE_FIELD_NAME} component={renderDropzoneInput} label="Coupon File" />
 
-      
+        <Field name="amount" component={renderField} label="Amount" />
+        <Field name="maxRedemptionAmount" component={renderField} label="Max Redemption Amount" />
 
-        <button type="submit" className="btn btn-primary">Submit</button>
+        <button type="submit" disabled={submitting} className="btn btn-primary">Submit</button>
+        <button type="button" disabled={pristine || submitting} onClick={reset} className="btn">Clear Values</button>
+        <br />
         <Link to="/" className="btn btn-danger">Cancel</Link>
       </form>
     );
   }
 }
 
-function validate(values) {
-  const errors = {};
 
-  if (!values.name) {
-    errors.title = 'Enter vendor name';
-  }
-  if (!values.categories) {
-    errors.categories = 'Enter categories';
-  }
-  if(!values.street) {
-    errors.content = 'Enter street';
-  }
 
-  return errors;
-}
 
 export default reduxForm({
   form: 'PublishNewCoupon',
-  fields: ['name', 'categories', 'street', 'city', 'zip', 'country'],
+  fields: ['name', 'categories', 'street', 'city', 'zip', 'country', 'amount', 'maxRedemptionAmount'],
   validate
 }, null, { publishCoupon }) (PublishCoupon);

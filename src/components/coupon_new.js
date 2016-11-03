@@ -115,6 +115,8 @@ class PublishCoupon extends Component {
         <Field name="amount" component={renderField} label="Amount" />
         <Field name="maxRedemptionAmount" component={renderField} label="Max Redemption Amount" />
 
+        <Field name="couplingAddress" component={renderField} label="Coupling Wallet Address" />
+
         <button type="submit" disabled={submitting} className="btn btn-primary">Submit</button>
         <button type="button" disabled={pristine || submitting} onClick={reset} className="btn">Clear Values</button>
         <br />
@@ -129,6 +131,5 @@ class PublishCoupon extends Component {
 
 export default reduxForm({
   form: 'PublishNewCoupon',
-  fields: ['name', 'categories', 'street', 'city', 'zip', 'country', 'amount', 'maxRedemptionAmount'],
   validate
 }, null, { publishCoupon }) (PublishCoupon);
